@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .result {
+            font-size: 40px;
+            font-weight: bold;
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:active {
+            background-color: #369636;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Coin Flip</h1>
+    <div class="result" id="result">Flip the Coin!</div>
+    <br>
+    <button id="flipButton">Flip Coin</button>
+
+    <script>
+        const flipButton = document.getElementById("flipButton");
+        const resultDisplay = document.getElementById("result");
+
+        // Function to flip the coin
+        flipButton.addEventListener("click", function() {
+            // Generate a random number (0 or 1)
+            const flipResult = Math.random() < 0.5 ? "Heads" : "Tails";
+
+            // Update the result display
+            resultDisplay.textContent = flipResult;
+        });
+    </script>
+
+</body>
+</html>

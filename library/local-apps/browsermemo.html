@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Memo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .memo-box {
+            width: 80%;
+            height: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        .buttons-container {
+            margin-top: 20px;
+        }
+        .buttons-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .buttons-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Browser Memo</h1>
+        <textarea id="memo" class="memo-box" placeholder="Write your memo here..."></textarea>
+
+        <div class="buttons-container">
+            <button onclick="saveMemo()">Save Memo</button>
+            <button onclick="downloadMemo()">Download Memo</button>
+        </div>
+    </div>
+
+    <script>
+        // Save the memo to local storage
+        function saveMemo() {
+            const memoContent = document.getElementById("memo").value;
+            localStorage.setItem("memo", memoContent);
+            alert("Memo saved!");
+        }
+
+        // Download the memo as a .txt file
+        function downloadMemo() {
+            const memoContent = document.getElementById("memo").value;
+            const blob = new Blob([memoContent], { type: 'text/plain' });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "memo.txt";
+            link.click();
+        }
+
+        // Load saved memo from local storage when the page is loaded
+        window.onload = function() {
+            const savedMemo = localStorage.getItem("memo");
+            if (savedMemo) {
+                document.getElementById("memo").value = savedMemo;
+            }
+        }
+    </script>
+
+</body>
+</html>

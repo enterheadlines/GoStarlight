@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Encoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #encodedOutput {
+            width: 80%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            word-wrap: break-word;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:active {
+            background-color: #369636;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Base64 Encoder</h1>
+    <p>Enter your text below to encode it to Base64:</p>
+
+    <textarea id="textInput" placeholder="Enter text to encode..."></textarea>
+    
+    <button id="encodeButton">Encode to Base64</button>
+    
+    <h2>Encoded Base64:</h2>
+    <textarea id="encodedOutput" readonly></textarea>
+
+    <script>
+        const encodeButton = document.getElementById("encodeButton");
+        const textInput = document.getElementById("textInput");
+        const encodedOutput = document.getElementById("encodedOutput");
+
+        // Function to encode text to Base64
+        encodeButton.addEventListener("click", function() {
+            const text = textInput.value;
+            
+            // Check if there is text entered
+            if (text) {
+                // Encode the text to Base64 and display the result
+                const encodedText = btoa(text);
+                encodedOutput.value = encodedText;
+            } else {
+                encodedOutput.value = "Please enter some text to encode.";
+            }
+        });
+    </script>
+
+</body>
+</html>

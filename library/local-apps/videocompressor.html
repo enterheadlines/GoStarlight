@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Compressor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+        input[type="file"] {
+            margin-top: 20px;
+        }
+        #generateButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        #generateButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Video Compressor</h1>
+    <p>Upload a video file to compress it.</p>
+
+    <input type="file" id="videoInput" accept="video/*">
+    <br>
+    <button id="generateButton" style="display:none;">Compress Video</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg.js/4.2.0/ffmpeg.min.js"></script>
+
+    <script>
+        const videoInput = document.getElementById("videoInput");
+        const generateButton = document.getElementById("generateButton");
+        let videoFile = null;
+
+        // Event listener for file upload
+        videoInput.addEventListener("change", function(event) {
+            videoFile = event.target.files[0];
+            if (videoFile) {
+                generateButton.style.display = "inline-block"; // Show the "Compress Video" button
+            }
+        });
+
+        // Event listener for generating the compressed video
+        generateButton.addEventListener("click", async function() {
+            if (!videoFile) {
+                alert("Please select a video file to compress.");
+                return;
+            }
+
+            // Load FFmpeg.js
+            const ffmpeg = FFmpeg.createFFmpeg({ log: true });
+            await ffmpeg.load();
+
+            // Write the video file to FFmpeg's virtual filesystem
+            ffmpeg.FS("writeFile", videoFile.name, await fetch(URL.createObjectURL(videoFile)).then(res => res.arrayBuffer()));
+
+            // Run FFmpeg command to compress the video
+            const outputVideo = "output_compressed.mp4";
+            await ffmpeg.run(
+                "-i", videoFile.name,         // Input video file
+                "-vcodec", "libx264",         // Video codec (H.264)
+                "-crf", "28",                 // Constant Rate Factor (lower values = better quality, higher values = more compression)
+                "-preset", "fast",            // Encoding speed (can adjust for performance)
+                "-b:v", "1M",                 // Video bitrate (lower values = more compression)
+                outputVideo
+            );
+
+            // Read the compressed video file from the virtual filesystem
+            const compressedVideo = ffmpeg.FS("readFile", outputVideo);
+
+            // Create a Blob from the compressed video data
+            const videoBlob = new Blob([compressedVideo.buffer], { type: "video/mp4" });
+
+            // Create a download link
+            const videoUrl = URL.createObjectURL(videoBlob);
+            const downloadLink = document.createElement("a");
+            downloadLink.href = videoUrl;
+            downloadLink.download = "compressed_video.mp4";
+            downloadLink.click();
+
+            // Reset the file input
+            videoInput.value = "";
+            generateButton.style.display = "none";
+        });
+    </script>
+
+</body>
+</html>

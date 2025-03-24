@@ -701,7 +701,7 @@ option{
     outline: none;
     color: white;
     padding: 20px;
-    box-shadow: 0 0 10px  rgb(20, 20, 20);
+    box-shadow: 0 0 10px   rgb(46, 46, 46);
     border: none;
     background-color: rgb(65, 65, 65);
     border-radius: 20px;
@@ -1014,4 +1014,25 @@ hr{
     to {
         opacity: 0;
     }
+}
+ /* Style for the Google Translate widget container */
+ #google_translate_container {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #333; /* Black theme */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    color: white; /* Text color for better visibility */
+}
+
+#google_translate_container select {
+    font-size: 14px;
+    padding: 5px;
+    background-color: #444; /* Darker background for select */
+    color: white; /* Text color for select */
+    border: 1px solid #666; /* Border color for select */
 }

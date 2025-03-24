@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .image-preview {
+            width: 80%;
+            max-width: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none;
+        }
+        .upload-button, .download-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .upload-button:hover, .download-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Image Compressor</h1>
+        <input type="file" id="imageInput" accept="image/*" class="upload-button">
+        
+        <div id="imagePreviewContainer" class="image-preview">
+            <img id="imagePreview" src="" alt="Image Preview" width="100%">
+        </div>
+
+        <button id="downloadButton" class="download-button" style="display:none;">Download Compressed Image</button>
+    </div>
+
+    <script>
+        // When an image is uploaded
+        document.getElementById("imageInput").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.onload = function() {
+                        // Compress the image when it's loaded
+                        compressImage(img);
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Function to compress the image
+        function compressImage(img) {
+            const maxWidth = 800;  // Set maximum width for the image
+            const maxHeight = 600; // Set maximum height for the image
+
+            // Create a canvas element
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+
+            // Calculate new dimensions while maintaining aspect ratio
+            let width = img.width;
+            let height = img.height;
+
+            if (width > maxWidth) {
+                height = (height * maxWidth) / width;
+                width = maxWidth;
+            }
+
+            if (height > maxHeight) {
+                width = (width * maxHeight) / height;
+                height = maxHeight;
+            }
+
+            // Set canvas size to the compressed dimensions
+            canvas.width = width;
+            canvas.height = height;
+
+            // Draw the image on the canvas
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Get the compressed image data as a base64-encoded PNG
+            const compressedImage = canvas.toDataURL("image/jpeg", 0.7);  // You can adjust the quality (0.7)
+
+            // Show the image preview
+            document.getElementById("imagePreview").src = compressedImage;
+            document.getElementById("imagePreviewContainer").style.display = "block";
+
+            // Make the download button visible
+            document.getElementById("downloadButton").style.display = "inline-block";
+
+            // Enable the download button
+            document.getElementById("downloadButton").onclick = function() {
+                downloadCompressedImage(compressedImage);
+            };
+        }
+
+        // Function to download the compressed image
+        function downloadCompressedImage(compressedImage) {
+            const link = document.createElement("a");
+            link.href = compressedImage;
+            link.download = "compressed-image.jpg";  // The file will be downloaded as 'compressed-image.jpg'
+            link.click();
+        }
+    </script>
+
+</body>
+</html>

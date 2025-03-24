@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .dice {
+            font-size: 100px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            display: inline-block;
+            background-color: #fff;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:active {
+            background-color: #369636;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dice Roller</h1>
+    <div class="dice" id="dice">🎲</div>
+    <br>
+    <button id="rollButton">Roll Dice</button>
+
+    <script>
+        const rollButton = document.getElementById("rollButton");
+        const dice = document.getElementById("dice");
+
+        // Function to roll the dice
+        rollButton.addEventListener("click", function() {
+            // Generate a random number between 1 and 6
+            const roll = Math.floor(Math.random() * 6) + 1;
+
+            // Update the dice display with the rolled number
+            dice.textContent = roll;
+
+            // Optionally, you can use emoji representations of dice faces
+            const diceEmojis = [
+                "⚀", "⚁", "⚂", "⚃", "⚄", "⚅"
+            ];
+
+            dice.textContent = diceEmojis[roll - 1]; // Change the dice emoji based on the roll
+        });
+    </script>
+
+</body>
+</html>
