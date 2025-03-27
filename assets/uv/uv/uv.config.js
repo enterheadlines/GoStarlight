@@ -1,6 +1,6 @@
 self.__uv$config = {
     prefix: '/assets/uv/',
-    bare:'https://bareglsdacier.global.ssl.fastly.net/bare/',
+    bare:'https://bare.benrogo.net/',
     encodeUrl: Ultraviolet.codec.xor.encode,
     decodeUrl: Ultraviolet.codec.xor.decode,
     handler: '/assets/uv/uv/uv.handler.js',

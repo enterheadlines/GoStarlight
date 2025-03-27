@@ -17,13 +17,14 @@
     <meta name="keywords"
         content="starlight, proxy, unblocked, unblock, unblocked games, unblocking, proxies, starlight proxy, games unblocked, youtube unblocked, tiktok unblocked, youtube, tiktok, how to play unblocked games at school, games, online games, fortnite games unblocked, nowgg unblocked, nowgg alt links, nowgg, geforce now unblocked, geforcenow, geforce unblocked, geforcenow unblocked, geforce unblocked, play games, unblocked games for school, Unblocked, Games, Proxy, News, Source, Unblocking, Access, Online, Security, VPN, Browsing, Free, Play, Internet, Tools, Speed, Stream, Services, Websites, Anonymous, Privacy, Download, Connect, Network, Game List, Educational, Safe, Explore, Entertainment, Platform, User-Friendly, Experience, Content, Support, Community, Features, Compatibility, Fast, Reliable, Bypass, Filters, Restrictions, Mobile, Desktop, Gaming Hub, Reviews, Ratings, Updates, Tutorials, Guides, Forum, Discussion, Tips, Tricks, Resources, Insights, Feedback, Events, Contests, Challenges, Multiplayer, Strategy, Adventure, Simulation, Action, Casual, Puzzle, Platformer, Arcade, Retro, New Releases, Downloads, User Reviews, Popular, Trending, Favorites, Highlights, Recommendations, Profiles, Achievements, Leaderboards, Quests, Cooperative, Solo, Community Events, Playlists, Scoring, Game Development, Live Events, Streaming, Collaborations, Game Modes, Beta Testing, Special Offers, Promotions, Discounts.">
     <meta name="author" content="Enterheadlines">
-    <title>Starlight - Settings</title>
+    <title>Starlight - Browser Memo</title>
     <meta name="description"
         content=" Starlight is your all-in-one platform for utilities, hacks, games, and proxies, designed to enhance your online experience and unlock limitless possibilities!">
     <link rel="icon" href="/assets/images/offical/starlight.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="/assets/json/manifest.json">
     <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/game.css">
     <script src="/assets/js/index.js"></script>
     <script src="/assets/js/serviceworker.js"></script>
     <meta property="og:title" content="Starlight">
@@ -48,6 +49,7 @@
 
         gtag('config', 'G-36EM66LHER');
     </script>
+
 </head>
 
 <body>
@@ -61,62 +63,63 @@
 
     <br>
     <br>
-    <center>
-        <div class="text">Settings</div>
-    </center>
     <br>
-    <div id="settingsContainer">
-        <div class="settingsColumn">
-            <div class="settings-container">
-                <center>
-                    <h1>Change Background Theme</h1>
-                </center>
-                <select id="gradientSelector">
-                    <option value="linear-gradient(to right, #ff7e5f, #feb47b)">Sunset</option>
-                    <option value="linear-gradient(to right, #6a11cb, #2575fc)">Purple Blue</option>
-                    <option value="linear-gradient(to right, #ff6a6a, #f7b733)">Coral</option>
-                    <option value="linear-gradient(to right, #00c6ff, #0072ff)">Sky</option>
-                </select>
-                <button id="resetButton">Reset to Default</button>
-            
-            </div>
-            </div>
-        <div class="settingsColumn">
-            <div class="settings-container">
-                <center>
-                    <h1>Cloaker</h1>
-                </center>
-                <center><a id="openScriptButton"><button id="type">Open about:blank in new tab</button></a></center><br>
-                <center><a id="openscriptButton"><button id="type">Open about:blank in new window</button></a></center>
+
+
+    <div class="container-iframe">
+        <div class="iframe-container">
+            <iframe id="iframe" name="iframe" src="/library/local-apps/browsermemo.html"></iframe>
+        </div>
+
+        <div class="controls">
+            &nbsp;&nbsp;
+            <a onclick="toggleFullscreen()"><img src="/assets/images/other/fullscreen.png" height="30" width="30"
+                    class="icon"> </a>
+            <a onclick="refreshIframe()"><img src="/assets/images/other/reload.png" height="30" width="30" class="icon">
+            </a>
+            <div class="share-container">
+                <a id="share-button"><img src="/assets/images/other/sharee.png" height="30" width="30" class="icon">
+                </a>
+                <div class="notification" id="notification">
+                    <span id="link-text"></span>
+                    <button class="copy-button" id="copy-button">Copy</button>
+                </div>
+                <a href="/library/local-apps/browsermemo.html" target="_blank"><img
+                        src="/assets/images/other/opendirect.png" height="30" width="30" class="icon"></a>
             </div>
         </div>
-        <div class="settingsColumn">
-            <div class="settings-container">
-                <center>
-                    <h1>Save Data/Load Data</h1>
-                </center>
-                <!-- Buttons for saving and loading -->
-                <button id="saveStorage">Download Local Storage</button>
-                <input type="file" id="loadStorage" accept=".json">
-                <label for="loadStorage" style="cursor: pointer;">Upload JSON to Load Local Storage</label>
+        <a href="">
+            <div class="ad">
+                <div class="adTXT">Ads open for sale</div>
+                <div class="script-container">
+
+                </div>
+
 
             </div>
-        </div>
-<div class="settingsColumn"
-        <div class="settingsColumn" id="siteInfo">
-            <h1>Site Info</h1>
-            <p><strong>Site Name:</strong>Starlight</p>
-            <p><strong>Description:</strong>Starlight is your all-in-one platform for utilities, hacks, games, and
-                proxies.</p>
-            <p><strong>Version:</strong> 2 Experimental</p>
+        </a>
+
+        <div class="desc">
+            <h2 class="desc-title">Title</h2>
+            <p>Browser Memo</p>
+            <h2 class="desc-title">Description</h2>
+            <p>Simple Browser Memo with download features</p>
+            <h2 class="desc-title">Creator</h2>
+            <p>Infamy
+            <p>
+            <h2 class="desc-title">Keybinds</h2>
+            <p>W,A,S,D, Custom Keys, Arrow keys</p>
+            <h2 class="desc-title">Devices</h2>
+            <p>Desktop, Mobile</p>
+            <h2 class="desc-title">Latest Update</h2>
+            <p>March 25th, 2025</p>
         </div>
     </div>
-</div>
-</div>
 </body>
-<script src="/assets/js/cloak.js"></script>
 
 </html>
+<script src="/general/js/cloak.js"></script>
+
 <script>
     let deferredPrompt;
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -126,8 +129,8 @@
     });
 
 </script>
+<script src="/assets/js/ai.js"></script>
 <script src="/assets/js/settings.js"></script>
-<script src="/assets/js/cloak.js"></script>
+<script src="/assets/js/game.js"></script>
 <script src="/assets/js/particlecode.js"></script>
 <script src="/assets/js/particles.js"></script>
-<script src="/assets/js/datasave.js"></script>
