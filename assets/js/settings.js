@@ -14,9 +14,6 @@ function onResetButtonClick() {
 }
 
 // Attach `onclick` handlers and other event handlers
-saveTitleFaviconButton.onclick = onSaveTitleFavicon;
-saveFaviconSelectButton.onclick = onSaveFaviconSelect;
-document.getElementById('popupToggle').onclick = onPopupToggleChange;
 gradientSelector.onclick = onGradientChange;
 resetButton.onclick = onResetButtonClick;
 
