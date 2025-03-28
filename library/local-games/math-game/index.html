@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .game-container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        .question {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px;
+            width: 50px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .score {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Math Game</h1>
+        <div class="question" id="question"></div>
+        <input type="number" id="answer" placeholder="Your Answer" />
+        <button onclick="checkAnswer()">Submit</button>
+        <div class="score" id="score">Score: 0</div>
+    </div>
+
+    <script>
+        // Game variables
+        let score = 0;
+        let currentAnswer = 0;
+        const questionElement = document.getElementById('question');
+        const scoreElement = document.getElementById('score');
+        const answerInput = document.getElementById('answer');
+
+        // Function to generate a random math question
+        function generateQuestion() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const operation = Math.floor(Math.random() * 4); // 0: add, 1: subtract, 2: multiply, 3: divide
+
+            let questionText = "";
+            switch (operation) {
+                case 0:
+                    questionText = `${num1} + ${num2}`;
+                    currentAnswer = num1 + num2;
+                    break;
+                case 1:
+                    questionText = `${num1} - ${num2}`;
+                    currentAnswer = num1 - num2;
+                    break;
+                case 2:
+                    questionText = `${num1} * ${num2}`;
+                    currentAnswer = num1 * num2;
+                    break;
+                case 3:
+                    questionText = `${num1} ÷ ${num2}`;
+                    currentAnswer = Math.floor(num1 / num2); // Remove decimal places in division
+                    break;
+            }
+            questionElement.textContent = `Solve: ${questionText}`;
+        }
+
+        // Function to check the player's answer
+        function checkAnswer() {
+            const userAnswer = parseInt(answerInput.value);
+            if (userAnswer === currentAnswer) {
+                score++;
+                alert("Correct!");
+            } else {
+                alert(`Incorrect! The correct answer was ${currentAnswer}`);
+            }
+            scoreElement.textContent = `Score: ${score}`;
+            answerInput.value = '';
+            generateQuestion();
+        }
+
+        // Initialize the game
+        generateQuestion();
+    </script>
+
+</body>
+</html>

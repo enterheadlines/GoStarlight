@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine</title>
+    <style>
+        /* Animated Background Gradient */
+        @keyframes gradient {
+            0% {
+                background: linear-gradient(45deg, #ff6ec7, #ff9a8b);
+            }
+            50% {
+                background: linear-gradient(45deg, #4facfe, #00f2fe);
+            }
+            100% {
+                background: linear-gradient(45deg, #ff6ec7, #ff9a8b);
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #ff6ec7, #ff9a8b);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            padding-top: 100px;
+        }
+
+        .slot-machine {
+            display: inline-block;
+            background-color: #333;
+            border-radius: 20px;
+            padding: 50px;
+            color: white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            width: 500px;
+            text-align: center;
+        }
+
+        .slots {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+
+        .slot {
+            width: 120px;
+            height: 120px;
+            background-color: #555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4em;
+            color: white;
+            border-radius: 15px;
+            margin: 0 10px;
+        }
+
+        .button {
+            background-color: #28a745;
+            color: white;
+            padding: 20px 40px;
+            font-size: 2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 2em;
+        }
+
+        .money-info {
+            font-size: 2em;
+            margin-bottom: 50px;
+        }
+
+        .restart {
+            display: inline-block;
+            background-color: #dc3545;
+            color: white;
+            padding: 20px 40px;
+            font-size: 2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+
+        .restart:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="money-info" id="moneyInfo">Money: $50</div>
+
+    <!-- Slot Machine -->
+    <div class="slot-machine" id="machine1">
+        <h2>Slot Machine ($2 per spin)</h2>
+        <div class="slots">
+            <div class="slot" id="slot1">🍒</div>
+            <div class="slot" id="slot2">🍒</div>
+            <div class="slot" id="slot3">🍒</div>
+        </div>
+        <button class="button" id="spinBtn1">Spin</button>
+    </div>
+
+    <div class="result" id="result"></div>
+    <button class="restart" id="restartBtn" style="display:none;">Restart</button>
+
+    <script>
+        const fruits = ['🍒', '🍋', '🍊', '🍉', '🍇'];
+        const spinBtn = document.getElementById('spinBtn1');
+        const resultDiv = document.getElementById('result');
+        const moneyInfo = document.getElementById('moneyInfo');
+
+        let money = localStorage.getItem('money') ? parseInt(localStorage.getItem('money')) : 50;
+
+        // Slot machine properties
+        const machine = {
+            cost: 2,
+            jackpotChance: 0.1,
+            slots: ['slot1', 'slot2', 'slot3'],
+            spinBtn
+        };
+
+        // Update money display
+        function updateMoneyDisplay() {
+            moneyInfo.textContent = `Money: $${money}`;
+        }
+
+        // Get a random fruit for the slots
+        function getRandomFruit() {
+            return fruits[Math.floor(Math.random() * fruits.length)];
+        }
+
+        // Handle the spinning
+        function spinSlots() {
+            if (money < machine.cost) {
+                resultDiv.textContent = `Not enough money to spin ($${machine.cost})!`;
+                resultDiv.style.color = 'red';
+                return;
+            }
+
+            // Deduct money
+            money -= machine.cost;
+            updateMoneyDisplay();
+
+            // Disable the button while spinning
+            machine.spinBtn.disabled = true;
+            resultDiv.textContent = '';
+
+            let spinCount = 0;
+            const interval = setInterval(() => {
+                machine.slots.forEach((slotId) => {
+                    document.getElementById(slotId).textContent = getRandomFruit();
+                });
+                spinCount++;
+
+                if (spinCount === 5) { // Stop after 5 rotations
+                    clearInterval(interval);
+                    machine.spinBtn.disabled = false;
+                    checkResult();
+                }
+            }, 100);
+        }
+
+        // Check result of the spin
+        function checkResult() {
+            const jackpotChance = machine.jackpotChance;
+            const slot1 = document.getElementById(machine.slots[0]).textContent;
+            const slot2 = document.getElementById(machine.slots[1]).textContent;
+            const slot3 = document.getElementById(machine.slots[2]).textContent;
+
+            if (slot1 === slot2 && slot2 === slot3) {
+                if (Math.random() < jackpotChance) {
+                    money += 500; // Jackpot!
+                    resultDiv.textContent = 'You Win $500!';
+                    resultDiv.style.color = 'green';
+                } else {
+                    money += 100; // Regular win
+                    resultDiv.textContent = 'You Win $100!';
+                    resultDiv.style.color = 'green';
+                }
+            } else {
+                resultDiv.textContent = 'Try Again!';
+                resultDiv.style.color = 'red';
+            }
+
+            updateMoneyDisplay();
+            localStorage.setItem('money', money);
+
+            // Check if player is out of money
+            if (money <= 0) {
+                resultDiv.textContent = 'You ran out of money! Game Over!';
+                resultDiv.style.color = 'red';
+                machine.spinBtn.disabled = true;
+                document.getElementById('restartBtn').style.display = 'inline-block';
+            }
+        }
+
+        // Restart the game
+        function restartGame() {
+            money = 50;
+            updateMoneyDisplay();
+            localStorage.setItem('money', money);
+            resultDiv.textContent = '';
+            document.getElementById('restartBtn').style.display = 'none';
+            machine.spinBtn.disabled = false;
+        }
+
+        // Spin button event listener
+        spinBtn.addEventListener('click', spinSlots);
+
+        // Restart button event listener
+        document.getElementById('restartBtn').addEventListener('click', restartGame);
+
+        // Initialize money display on page load
+        updateMoneyDisplay();
+    </script>
+</body>
+</html>
