@@ -67,7 +67,184 @@
         <div class="text">Starlight's ROM's</div>
     </center>
     <br>
-   
+    <center>
+        <select id="categorySelect">
+            <option value="">All</option>
+            <option value="Adventure">Adventure</option>
+            <option value="FPS">FPS</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="Arcade">Arcade</option>
+            <option value="Platformer">Platformer</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Sandbox">Sandbox</option>
+            <option value="Multiplayer">Multiplayer</option>
+            <option value="Mobile-Friendly">Mobile Friendly</option>
+            <option value="Shooter">Shooter</option>
+            <option value="2D">2D</option>
+            <option value="Horror">Horror</option>
+        </select>
+    </center>
+    <!--data-category="Adventure"-->
+    <!--data-category="FPS"-->
+    <!--data-category="Puzzle"-->
+    <!--data-category="Arcade"-->
+    <!--data-category="Platformer"-->
+    <!--data-category="Simulation"-->
+    <!--data-category="Sandbox"-->
+    <!--data-category="Multiplayer"-->
+    <!--data-category="Mobile-Friendly"-->
+    <!--data-category="Shooter"-->
+    <!--data-category="2D"-->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search Our Arcade Library...">
+        <button onclick="searchGames()">Search</button>
+    </div>
+    <br>
+    <div class="row">
+        <div class="column" data-category="Platformer">
+            <a href="/assets/roms/Elf - The Movie (USA) (En,Fr,De,Es,It).gba"><img src="/assets/images/thumbnails/elfthemovie.jpeg">
+                <div class="description">
+                    <h2>Elf - The Movie</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/donkeykongcountry2.jpeg">
+                <div class="description">
+                    <h2>Donkey Kong Country 2</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/aerobizsupersonic.png">
+                <div class="description">
+                    <h2>Aerobix Supersonic</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Platformer">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/supermarioworld.jpeg">
+                <div class="description">
+                    <h2>Super Mario World</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/nbajam.jpeg">
+                <div class="description">
+                    <h2>NBA Jam</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="2D">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/ducktales.jpeg">
+                <div class="description">
+                    <h2>DuckTales</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Shooter">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/starfox.png">
+                <div class="description">
+                    <h2>Star Fox</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Shooter">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/starfox2.jpeg">
+                <div class="description">
+                    <h2>Star Fox 2</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/supermariokart.jpeg">
+                <div class="description">
+                    <h2>Super Mario Kart</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/topgear.jpeg">
+                <div class="description">
+                    <h2>Top Gear</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/4in1.jpeg">
+                <div class="description">
+                    <h2>Mani 4 in 1</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Platformer">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/warioland.jpeg">
+                <div class="description">
+                    <h2>Wario Land</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="2D">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/ ">
+                <div class="description">
+                    <h2>Tetris</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="2D">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/tennis.jpeg">
+                <div class="description">
+                    <h2>Tennis</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/yakuman.jpeg">
+                <div class="description">
+                    <h2>Yakuman</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/uno.jpeg">
+                <div class="description">
+                    <h2>Uno</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="Arcade">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/cardgame.jpeg">
+                <div class="description">
+                    <h2>Card Game</h2>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" data-category="2D">
+            <a href="/assets/roms/ "><img src="/assets/images/thumbnails/tetris2.jpeg">
+                <div class="description">
+                    <h2>Tetris 2</h2>
+            </a>
+        </div>
+    </div>
+</div>
 
 </body>
 
