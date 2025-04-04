@@ -44,9 +44,9 @@ async function fetchMediaDetails() {
 }
 
 if (type === 'TV Show' && season && episode) {
-    mediaFrame.src = `https://vidbinge.dev/embed/tv/${tmdbId}/${season}/${episode}`;
+    mediaFrame.src = `https://player.videasy.net/tv/${tmdbId}/${season}/${episode}`;
 } else {
-    mediaFrame.src = `https://vidbinge.dev/embed/movie/${tmdbId}`;
+    mediaFrame.src = `https://player.videasy.net/movie/${tmdbId}`;
 }
 
 // Fetch media details after setting the iframe source
