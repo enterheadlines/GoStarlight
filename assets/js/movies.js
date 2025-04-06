@@ -37,3 +37,22 @@ function displayResults(items, type) {
         resultsDiv.appendChild(itemDiv);
     });
 }
+
+document.getElementById('closePopup').addEventListener('click', () => {
+    const season = document.getElementById('seasonInput').value;
+    const episode = document.getElementById('episodeInput').value;
+
+    if (season && episode) {
+        window.location.href =`/assets/misc/movies/movies.html?tmdb_id=${selectedShowId}&type=TV Show&season=${season}&episode=${episode}`;
+    } else {
+        alert("Please enter both season and episode numbers.");
+    }
+});
+
+// Close the popup when clicking outside of it
+window.onclick = function(event) {
+    const popup = document.getElementById('popup');
+    if (event.target === popup) {
+        popup.style.display = "none";
+    }
+}

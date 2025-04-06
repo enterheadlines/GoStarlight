@@ -1,0 +1,23 @@
+#audioCatalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px;
+  }
+  .audio-card {
+    background-color: hsl(0, 0%, 26%);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .audio-card audio {
+    width: 100%;
+    height: 50px;
+  }
+  .audio-card h3 {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
