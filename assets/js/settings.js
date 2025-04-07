@@ -1,27 +1,4 @@
-// Background Gradient Handling
-const gradientSelector = document.getElementById('gradientSelector'); // Assuming you have a <select id="gradientSelector"> in your HTML
-const resetButton = document.getElementById('resetButton'); // Assuming you have a <button id="resetButton"> in your HTML
 
-function onGradientChange() {
-    const selectedGradient = gradientSelector.value;
-    document.body.style.background = selectedGradient;
-    localStorage.setItem('backgroundGradient', selectedGradient);
-}
-
-function onResetButtonClick() {
-    const defaultGradient = 'linear-gradient(to right, #ffffff, #f0f0f0)';
-    document.body.style.background = defaultGradient;
-    localStorage.removeItem('backgroundGradient');
-    gradientSelector.selectedIndex = -1;
-}
-
-// Attach `onclick` handlers
-if(gradientSelector){
-    gradientSelector.onclick = onGradientChange;
-}
-if(resetButton){
-    resetButton.onclick = onResetButtonClick;
-}
 
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
@@ -86,4 +63,54 @@ function waitForGoogleTranslateWidget() {
         }
     });
     observer.observe(targetNode, config); // Start observing changes
+}
+
+
+// Load saved title and favicon from localStorage when the page loads
+window.onload = function() {
+    const savedTitle = localStorage.getItem("documentTitle");
+    const savedFavicon = localStorage.getItem("faviconUrl");
+
+    if (savedTitle) {
+        document.title = savedTitle;
+        document.getElementById("docTitleInput").value = savedTitle; // Updated ID here
+    }
+
+    if (savedFavicon) {
+        document.getElementById("favicon").href = savedFavicon;
+        document.getElementById("faviconInput").value = savedFavicon; // Updated ID here
+    }
+};
+
+// Change the document title and save it to localStorage
+function changeTitle() {
+    const newTitle = document.getElementById("docTitleInput").value.trim(); // Updated ID here
+    if (newTitle !== "") {
+        document.title = newTitle;
+        localStorage.setItem("documentTitle", newTitle);  // Save title to localStorage
+        alert("Document title changed to: " + newTitle);
+        document.getElementById("errorTitle").classList.add("hidden");
+    } else {
+        document.getElementById("errorTitle").classList.remove("hidden");
+    }
+}
+
+// Change the favicon and save it to localStorage
+function changeFavicon() {
+    const newFavicon = document.getElementById("faviconInput").value.trim(); // Updated ID here
+    if (newFavicon !== "" && isValidFaviconUrl(newFavicon)) {
+        document.getElementById("favicon").href = newFavicon;
+        localStorage.setItem("faviconUrl", newFavicon);  // Save favicon to localStorage
+        alert("Favicon changed to: " + newFavicon);
+        document.getElementById("errorFavicon").classList.add("hidden");
+    } else {
+        document.getElementById("errorFavicon").classList.remove("hidden");
+    }
+}
+
+// Helper function to check if the URL is a valid image
+function isValidFaviconUrl(url) {
+    const image = new Image();
+    image.src = url;
+    return image.complete && image.naturalWidth !== 0;
 }

@@ -69,19 +69,23 @@
     <br>
     <div id="settingsContainer">
         <div class="settingsColumn">
-            <div class="settings-container">
-                <center>
-                    <h1>Change Background Theme</h1>
-                </center>
-                <select id="gradientSelector">
-                    <option value="linear-gradient(to right, #ff7e5f, #feb47b)">Sunset</option>
-                    <option value="linear-gradient(to right, #6a11cb, #2575fc)">Purple Blue</option>
-                    <option value="linear-gradient(to right, #ff6a6a, #f7b733)">Coral</option>
-                    <option value="linear-gradient(to right, #00c6ff, #0072ff)">Sky</option>
-                </select>
-                <button id="resetButton">Reset to Default</button>
-            
+            <h2>Change Document Title and Favicon</h2>
+
+            <div class="section">
+                <label for="docTitleInput">New Document Title:</label>
+                <input type="text" id="docTitleInput" placeholder="Enter new title">
+                <button onclick="changeTitle()">Change Title</button>
+                <p id="errorTitle" class="alert hidden">Please enter a valid title.</p>
             </div>
+            
+            <!-- Favicon Input Section -->
+            <div class="section">
+                <label for="faviconInput">New Favicon URL:</label>
+                <input type="text" id="faviconInput" placeholder="Enter favicon URL (e.g. icon.png)">
+                <button onclick="changeFavicon()">Change Favicon</button>
+                <p id="errorFavicon" class="alert hidden">Please enter a valid favicon URL (it should be an image file).</p>
+            </div>
+            
             </div>
         <div class="settingsColumn">
             <div class="settings-container">
