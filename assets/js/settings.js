@@ -114,21 +114,4 @@ function isValidFaviconUrl(url) {
     image.src = url;
     return image.complete && image.naturalWidth !== 0;
 }
-        // Reset the document title and favicon to their default values
-        function resetTitleAndFavicon() {
-            // Reset to default values (original title and favicon)
-            const defaultTitle = "Original Document Title"; // Set the default title here
-            const defaultFavicon = "favicon.ico"; // Set the default favicon URL here
-
-            // Reset title and favicon
-            document.title = defaultTitle;
-            document.getElementById("favicon").href = defaultFavicon;
-
-            // Clear inputs and remove stored values from localStorage
-            document.getElementById("docTitleInput").value = defaultTitle;
-            document.getElementById("faviconInput").value = defaultFavicon;
-            localStorage.removeItem("documentTitle");
-            localStorage.removeItem("faviconUrl");
-
-            alert("Title and Favicon have been reset to their original value");
-        }
+      
