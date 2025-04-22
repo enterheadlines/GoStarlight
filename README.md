@@ -1,4 +1,4 @@
-# Starlight V2: Your All-in-One Platform
+# Starlight V2.1: Your All-in-One Platform
 Starlight is an open-source platform offering games, movies, apps, proxies, guides, AI, 
   Search engine and useful tools to enhance your online experience.
 ## Features
@@ -20,6 +20,8 @@ Starlight is an open-source platform offering games, movies, apps, proxies, guid
  - Groq - for the ai api
  - Seraph - for the cloaking icons and roms
  - Vimms lair - for the roms
+ - GSE - for the search engine api
+ - Widgetbot - for the forums page
 
 ## Other
 If u have any questions or suggestions, join our discord server
