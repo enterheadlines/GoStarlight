@@ -15,12 +15,13 @@
 
   // Array of link data
   const links = [
+    { href: "/assets/html/exploits.html", imgSrc: "/assets/images/navicons/exploits.png", text: "Exploits" },
     { href: "/assets/html/arcade.html", imgSrc: "/assets/images/navicons/arcade.png", text: "Arcade" },
     { href: "/assets/html/utilities.html", imgSrc: "/assets/images/navicons/apps.png", text: "Utilities" },
     { href: "/assets/html/media.html", imgSrc: "/assets/images/navicons/movies.png", text: "Media" },
     { href: "/assets/html/ai.html", imgSrc: "/assets/images/navicons/ai.png", text: "AI" },
     { href: "/assets/html/search.html", imgSrc: "/assets/images/navicons/search.png", text: "Search" },
-    { href: "/assets/html/settings.html", imgSrc: "/assets/images/navicons/settings.png", text: "Settings" }
+    { href: "/assets/html/extras.html", imgSrc: "/assets/images/navicons/extras.png", text: "Extras" }
   ];
 
   // Create each link

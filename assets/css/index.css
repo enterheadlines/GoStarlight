@@ -1036,3 +1036,23 @@ hr{
     color: white; /* Text color for select */
     border: 1px solid #666; /* Border color for select */
 }
+
+#bookmarkletcolumn{
+        .column {
+        font-weight: 700;
+        position: relative;
+        width: 300px; /* Width of the square */
+        height: 450px; /* Height of the square */
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.5s ease; /* Slowed down the transition */
+        border-radius: 1px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+}
+#bookmarklet{
+        margin: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+}

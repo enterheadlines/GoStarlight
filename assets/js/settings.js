@@ -115,3 +115,21 @@ function isValidFaviconUrl(url) {
     return image.complete && image.naturalWidth !== 0;
 }
       
+    window.onload = function() {
+                var storedColor = localStorage.getItem('backgroundColor') || '#414141';
+                document.body.style.backgroundColor = storedColor;
+                document.getElementById('colorPicker').value = storedColor;
+            };
+        
+            function changeBackgroundColor() {
+                var color = document.getElementById("colorPicker").value;
+                document.body.style.backgroundColor = color;
+                localStorage.setItem('backgroundColor', color);
+            }
+        
+            function resetBackgroundColor() {
+                document.body.style.backgroundColor = "#414141";
+                document.getElementById("colorPicker").value = "#414141";
+                localStorage.setItem('backgroundColor', "#414141 "); 
+                
+            }

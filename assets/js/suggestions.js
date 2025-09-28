@@ -11,7 +11,7 @@ meltBtn.addEventListener('click', async () => {
         return;
     }
 
-    const webhookUrl = 'https://discord.com/api/webhooks/1277946667454173247/kblvghILUYBuTkzPMT1ETM2XHe98M3DiYtESxgGq1gXrRjd2IqiPeIMSw5qDA8F27RSn'; // Replace with your Discord webhook URL
+    const webhookUrl = 'https://discord.com/api/webhooks/1409517903895728209/WDTPo2cBZiTkmFmhCoBOgmmztWducRpxc6_i2c7Q3nXvoeqEVkDBR8po9FLZ35i1UVSz'; // for those tryna to contact me saying my webhook is public its fine im using a dummy server anyway
     const payload = {
         content: `New Game Suggestion:\n**Game Name:** ${gameName}\n**Game URL:** ${gameUrl}`
     };

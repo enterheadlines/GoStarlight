@@ -1,4 +1,4 @@
-# Starlight V2.1: Your All-in-One Platform
+# Starlight V3: Your All-in-One Platform
 Starlight is an open-source platform offering games, movies, apps, proxies, guides, AI, 
   Search engine and useful tools to enhance your online experience.
 ## Features
@@ -12,6 +12,8 @@ Starlight is an open-source platform offering games, movies, apps, proxies, guid
  - ChatGPT
  - Fast Proxy
  - Cloaking Abilities
+ - Free Guides
+ - Bookmarklets and Exploits/Packs
 ## Credits
  - Infamy - developed all of the site and scraped some of the games
  - 3kh0 - for most of the games
